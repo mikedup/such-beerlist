@@ -7,9 +7,13 @@ var bodyParser = require('body-parser');
 var mongoose   = require('mongoose');
 var Beer     = require('./app/models/beer');
 
+// config files
+var db = require('./config/db');
+
 
 // Connect Mongo db
-mongoose.connect('mongodb://localhost/beers-demo');
+mongoose.connect(db.url);
+
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
