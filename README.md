@@ -1,4 +1,4 @@
 mean-demo
 =========
 
-Working through the Rest API tutorial on Scotch.io: http://scotch.io/tutorials/javascript/build-a-restful-api-using-node-and-express-4.
+Demo MEAN stack app written along with the tutorials on Scotch.io: http://scotch.io/series/getting-mean.
