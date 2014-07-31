@@ -21,6 +21,10 @@ app.use(bodyParser());
 var port = process.env.PORT || 8080; 		// set our port
 
 
+// Static directory
+app.use(express.static(__dirname + '/public'));
+
+
 // ROUTES FOR OUR API
 require('./app/routes')(app); // configure our routes
 

@@ -1,12 +1,12 @@
 var express    = require('express');    // call express
+var router     = express.Router();        // get an instance of the express Router
+var request    = require('request');
 
 // Models
 var Beer     = require('./models/beer');
 
 
 module.exports = function(app) {
-
-  var router = express.Router(); 				// get an instance of the express Router
 
   // middleware to use for all requests
   router.use(function (req, res, next) {
@@ -15,9 +15,8 @@ module.exports = function(app) {
     next(); // make sure we go to the next routes and don't stop here
   });
 
-
   // API Routes
-  router.route('/beers')
+  router.route('/api/beers')
 
     // create a bear (accessed at POST http://localhost:8080/api/beers)
     .post(function (req, res) {
@@ -48,7 +47,7 @@ module.exports = function(app) {
 
 
   // on routes that end in /beers/:beer_id
-  router.route('/beers/:beer_id')
+  router.route('/api/beers/:beer_id')
 
     // get the beer with that id (accessed at GET http://localhost:8080/api/beers/:beer_id)
     .get(function (req, res) {
@@ -89,13 +88,21 @@ module.exports = function(app) {
     });
 
 
-  // REGISTER OUR ROUTES 
-  // all of our routes will be prefixed with /api
-  app.use('/api', router);
-
-
-  // Frontend routes
-  router.get('/', function(req, res) {
-      res.sendfile('./public/index.html'); 
+  // BreweryDB
+  var breweryDatabaseUrl = 'http://api.brewerydb.com/v2/beers/?key=e765ef0a2337404434096dba9d085440';
+  app.get('/beers', function(req, res, next) {
+    request(breweryDatabaseUrl, function (err, response, body) {
+      res.send(body);
+    });
   });
+
+
+  // Frontend route
+  app.get('/', function (req, res) {
+      res.sendfile('./public/index.html'); // load our public/index.html file
+    });
+
+
+  // REGISTER OUR ROUTES 
+  app.use(router);
 }
