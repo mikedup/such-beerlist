@@ -1,6 +1,6 @@
 (function () {
 
-  function BrowseBeers($scope, DataService) {
+  function BrowseBeers ($scope, DataService) {
 
     this.beerlist;
     var self = this;

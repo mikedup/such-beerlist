@@ -25,13 +25,8 @@
         <a href="">Wishlist</a>
       <nav>
   </div>
-  <div ng-controller="BrowseBeers as beers" class="main-container">
-    <h2>Browse Beers</h2>
-    <div ng-repeat="beer in beers.beerlist" class="beer">
-      <img src="{{ beer.labels.icon }}">
-      <h3>{{ beer.name }}</h3>
-     <!--  <p>{{ beer.description }}</p> -->
-    </div>
-  </div>
+
+  <div ng-view class="main-container"></div>
+  
 </body>
 </html>

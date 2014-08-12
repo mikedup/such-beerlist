@@ -1,0 +1,10 @@
+<h2>Browse Beers</h2>
+<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-4">
+  <li ng-repeat="beer in beers.beerlist" >
+    <div class="beer">
+      <img ng-show="beer.labels.icon" src="{{ beer.labels.icon }}">
+      <h3>{{ beer.name }}</h3>
+      <p class="beer__description">{{ beer.description }}</p>
+    </div>
+  </li>
+</ul>
