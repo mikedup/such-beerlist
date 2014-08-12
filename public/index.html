@@ -21,10 +21,10 @@
 <body>
   <div ng-controller="SidebarCtrl" class="sidebar">
       <h1>Such Beerlist</h1>
-      <nav ng-init="current= 'browse'"class="pri-nav">
-        <a ng-class="{ active: current == 'browse' }" href="">Browse Beers</a>
-        <a href="">My Beers</a>
-        <a href="">Wishlist</a>
+      <nav class="pri-nav">
+        <a ng-class="{active: $location.path() == '/browse'}" href="#/browse">Browse Beers</a>
+        <a ng-class="{active: $location.path() == '/mybeers'}" href="#/mybeers">My Beers</a>
+        <a ng-class="{active: $location.path() == '/wishlist'}" href="#/wishlist">Wishlist</a>
       <nav>
   </div>
 
