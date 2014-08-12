@@ -1,25 +1,29 @@
-angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+(function () {
+  
+  function config ($routeProvider) {
+    $routeProvider
+      .when('/browse', {
+        templateUrl: '/views/browse.html',
+        controller: 'BrowseBeers',
+        controllerAs: 'beers'
+      })
+      .when('/mybeers', {
+        templateUrl: '/views/mybeers.html',
+        controller: 'MyBeers',
+        controllerAs: 'beers'
+      })
+      .when('/wishlist', {
+        templateUrl: '/views/wishlist.html',
+        controller: 'Wishlist',
+        controllerAs: 'beers'
+      })
+      .otherwise({
+        redirectTo: '/browse'
+      });
+  }
 
-  $routeProvider
+  angular
+    .module('app')
+    .config(config);
 
-    // home page
-    .when('/', {
-      templateUrl: 'views/home.html',
-      controller: 'MainController'
-    })
-
-    // nerds page that will use the NerdController
-    .when('/nerds', {
-      templateUrl: 'views/nerd.html',
-      controller: 'NerdController'
-    })
-
-    // 
-    .when('/geeks', {
-      templateUrl: 'views/geek.html',
-      controller: 'GeekController'  
-    });
-
-  $locationProvider.html5Mode(true);
-
-}]);
+})();
