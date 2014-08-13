@@ -3,15 +3,13 @@ var router     = express.Router();        // get an instance of the express Rout
 var request    = require('request');
 
 // Models
-var Beer     = require('./models/beer');
+var Beer = require('./models/beer');
 
 
 module.exports = function(app) {
 
   // middleware to use for all requests
   router.use(function (req, res, next) {
-    // do logging
-    console.log('Middleware used for authentication');
     next(); // make sure we go to the next routes and don't stop here
   });
 
@@ -20,17 +18,16 @@ module.exports = function(app) {
 
     // create a bear (accessed at POST http://localhost:8080/api/beers)
     .post(function (req, res) {
-      
       var beer = new Beer();    // create a new instance of the Beer model
       console.log(req.body);
-      beer.name = req.body.name;  // set the beers name (comes from the request)
+      beer.data = req.body;  // set the beer data object (comes from the request)
 
       // save the beer and check for errors
       beer.save(function(err) {
         if (err)
           res.send(err);
 
-        res.json({ message: 'Beer created!' });
+        res.json({ message: 'Beer Added!' });
       });
       
     })
@@ -77,12 +74,20 @@ module.exports = function(app) {
 
     .delete(function (req, res) {
       Beer.findById(req.params.beer_id, function (err, beer) {
+        // Remove beer
         Beer.remove({
           _id: req.params.beer_id
         }, function (err, beer) {
           if (err)
             res.send(err);
-          res.json({ message: 'Beer successfully deleted!' });
+        });
+
+        // Return update beer list
+        Beer.find(function(err, beers) {
+          if (err)
+            res.send(err);
+
+          res.json(beers);
         });
       });
     });

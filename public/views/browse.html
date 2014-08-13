@@ -5,6 +5,7 @@
       <img ng-show="beer.labels.icon" src="{{ beer.labels.icon }}">
       <h3>{{ beer.name }}</h3>
       <p class="beer__description">{{ beer.description }}</p>
+      <button ng-click="addToMyBeers(beer)">Add to My Beers</button>
     </div>
   </li>
 </ul>

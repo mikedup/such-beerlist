@@ -2,6 +2,4 @@
   
   angular.module('app', ['ngRoute']);
 
-
-
 })();

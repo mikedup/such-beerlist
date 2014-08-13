@@ -2,7 +2,7 @@
 
   function BrowseBeers ($scope, DataService) {
 
-    this.beerlist;
+    $scope.beerlist;
     var self = this;
 
     getBeerlist();
@@ -14,6 +14,17 @@
         })
         .error(function (err) {
           console.log('Sorry, something went wrong. No beers for you!');
+        });
+    }
+
+    $scope.addToMyBeers = function (beerData) {
+      DataService.addToMyBeers(beerData)
+        .success(function (beers) {
+          alert('Beer successfully added!');
+        })
+        .error(function (err) {
+          console.log(err);
+          alert('Sorry, something went wrong. No beers for you!');
         });
     }
 
