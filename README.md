@@ -1,4 +1,4 @@
-mean-demo
+Such Beerlist
 =========
 
-Demo MEAN stack app written along with the tutorials on Scotch.io: http://scotch.io/series/getting-mean.
+Demo MEAN stack app involving beer.
