@@ -2,20 +2,16 @@
 
   function BrowseBeers ($scope, DataService) {
 
-    $scope.beerlist;
     var self = this;
-
-    getBeerlist();
     
-    function getBeerlist () {
-      DataService.getBeerlist()
-        .success(function (beers) {
-          self.beerlist = beers.data;
-        })
-        .error(function (err) {
-          console.log('Sorry, something went wrong. No beers for you!');
-        });
-    }
+    //Get beerlist
+    DataService.getBeerlist()
+      .success(function (beers) {
+        self.beerlist = beers.data;
+      })
+      .error(function (err) {
+        console.log(err);
+      });
 
     $scope.addToMyBeers = function (beerData) {
       DataService.addToMyBeers(beerData)

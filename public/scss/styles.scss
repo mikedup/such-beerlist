@@ -44,7 +44,7 @@ h1 {
     background: url(/images/logo.png) center top no-repeat;
     background-size: 75px;
     color: #fff;
-    padding-top: 85px;
+    padding-top: 95px;
     margin-top: 20px;
     text-align: center;
   }
@@ -78,11 +78,22 @@ h1 {
 }
 
 .main-container {
+  height: 100%;
   padding: 2rem;
+  position: relative;
  
   @include breakpoint(medium) { 
     margin-left: 300px;
   }
+}
+
+.loader {
+  margin-left: -15px;
+  max-width: 30px;
+  position: absolute;
+  top: 25%;
+  left: 50%;
+
 }
 
 .beer {
@@ -91,6 +102,7 @@ h1 {
   max-height: 250px;
   overflow-y: scroll;
   padding: 1.5rem;
+  position: relative;
   width: 100%;
   h3 {
     margin-top: 0;

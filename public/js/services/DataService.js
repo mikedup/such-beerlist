@@ -1,10 +1,13 @@
 (function () {
 
-	function DataService ($http) {
+	function DataService ($http, $cacheFactory) {
+
+		var cache = $cacheFactory('beers');
+		var beerCache = cache.get('beers');
 
 		// Grab all beers from BreweryDB
 		this.getBeerlist = function () {
-			return $http({ method: 'GET', url: '/beers' });
+			return $http({ method: 'GET', url: '/beers', cache: beerCache });
 		}
 		
 		// Save beer to My Beers
@@ -24,7 +27,7 @@
 
 	}
 
-	DataService.$inject = ['$http'];
+	DataService.$inject = ['$http', '$cacheFactory'];
 
 	 angular
     .module('app')
